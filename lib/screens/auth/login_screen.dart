@@ -24,9 +24,18 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Ponto Fácil',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+              ShaderMask(
+                shaderCallback: (bounds) => const LinearGradient(
+                  colors: [Color.fromRGBO(6, 147, 227, 1), Color.fromRGBO(38, 169, 224, 1)],
+                ).createShader(bounds),
+                child: const Text(
+                  'On Time',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
               const SizedBox(height: 48),
               TextFormField(
@@ -66,6 +75,13 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   void _login() async {
