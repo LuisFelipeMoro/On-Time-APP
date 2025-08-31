@@ -77,7 +77,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                 subtitle: Text('Último registro: ${DateFormat('HH:mm').format(employee['lastEntry'])}'),
                 trailing: Chip(
                   label: Text(employee['status']),
-                  backgroundColor: _getStatusColor(employee['status']).withOpacity(0.2),
+                  backgroundColor: _getStatusColor(employee['status']).withValues(alpha: 0.2),
                 ),
                 onTap: () => _showEmployeeDetails(employee),
               );
