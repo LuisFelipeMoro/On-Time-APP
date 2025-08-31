@@ -68,7 +68,7 @@ class _ActivityItem extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: info['color'].withOpacity(0.1),
+          color: (info['color'] as Color).withValues(alpha: 0.1),
           shape: BoxShape.circle,
         ),
         child: Icon(

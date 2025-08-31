@@ -41,7 +41,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
             const Text('Período', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             DropdownButtonFormField<String>(
-              value: _selectedPeriod,
+              initialValue: _selectedPeriod,
               decoration: const InputDecoration(border: OutlineInputBorder()),
               items: _periods.map((period) {
                 return DropdownMenuItem(value: period, child: Text(period));

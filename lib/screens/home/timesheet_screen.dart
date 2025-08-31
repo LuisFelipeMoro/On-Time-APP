@@ -38,12 +38,6 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     );
   }
 
-
-
-
-
-
-
   void _recordEntry(EntryType type) {
     final entry = TimesheetEntry(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -65,18 +59,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     );
   }
 
-  IconData _getEntryIcon(EntryType type) {
-    switch (type) {
-      case EntryType.clockIn:
-        return Icons.login;
-      case EntryType.breakStart:
-        return Icons.pause;
-      case EntryType.breakEnd:
-        return Icons.play_arrow;
-      case EntryType.clockOut:
-        return Icons.logout;
-    }
-  }
+
 
   String _getEntryLabel(EntryType type) {
     switch (type) {

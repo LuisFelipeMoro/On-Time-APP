@@ -18,7 +18,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: AppColors.cardBackground,
       elevation: 2,
-      shadowColor: AppColors.primary.withOpacity(0.1),
+      shadowColor: AppColors.primary.withValues(alpha: 0.1),
       title: ShaderMask(
         shaderCallback: (bounds) => AppColors.primaryGradient.createShader(bounds),
         child: const Text(

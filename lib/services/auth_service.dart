@@ -1,49 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../models/user_model.dart';
 
 class AuthService extends ChangeNotifier {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   UserModel? _currentUser;
   bool _isLoading = false;
 
   UserModel? get currentUser => _currentUser;
   bool get isLoading => _isLoading;
 
-  AuthService() {
-    _auth.authStateChanges().listen(_onAuthStateChanged);
-  }
-
-  void _onAuthStateChanged(User? user) {
-    if (user != null) {
-      _currentUser = UserModel(
-        id: user.uid,
-        email: user.email ?? '',
-        name: user.displayName ?? '',
-        role: UserRole.employee, // Default role
-      );
-    } else {
-      _currentUser = null;
-    }
-    notifyListeners();
-  }
-
   Future<bool> signIn(String email, String password) async {
-    try {
-      _isLoading = true;
-      notifyListeners();
-      
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
-      return true;
-    } catch (e) {
-      return false;
-    } finally {
-      _isLoading = false;
-      notifyListeners();
-    }
+    _isLoading = true;
+    notifyListeners();
+    
+    // Simulate login delay
+    await Future.delayed(const Duration(seconds: 1));
+    
+    // Mock successful login
+    _currentUser = UserModel(
+      id: '1',
+      email: email,
+      name: 'Usuário Teste',
+      role: email.contains('admin') ? UserRole.admin : UserRole.employee,
+    );
+    
+    _isLoading = false;
+    notifyListeners();
+    return true;
   }
 
   Future<void> signOut() async {
-    await _auth.signOut();
+    _currentUser = null;
+    notifyListeners();
   }
 }
